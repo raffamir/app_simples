@@ -1,20 +1,19 @@
-name: app simples para teste com docker
+name: pipeline
 
 on:
   push:
-    branch:
+    branches:
       - main
-  pull_request:
-    branch:
-      - main
-
+      
 jobs:
+
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
+
+      - name: Checkout do código
+        uses: actions/checkout@v3
 
       - name: Login no Docker Hub
         uses: docker/login-action@v3
