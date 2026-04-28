@@ -1,29 +1,32 @@
 services:
   db:
     image: postgres:15-alpine
+    container_name: joao_db
     environment:
       POSTGRES_USER: fatec_user
       POSTGRES_PASSWORD: fatec_password
       POSTGRES_DB: todolist
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - joao_data:/var/lib/postgresql/data
 
   api:
     build: ./backend
+    container_name: joao_api
     restart: always  # <-- Se a API cair, o Docker sobe ela de novo até o banco estar pronto.
     environment:
       DB_HOST: db
     depends_on:
       - db
     ports:
-      - "3000:3000"
+      - "3001:3000"
 
   web:
     build: ./frontend
+    container_name: joao_web
     ports:
-      - "80:80"
+      - "8001:80"
     depends_on:
       - api
 
 volumes:
-  postgres_data:
+  joao_data:

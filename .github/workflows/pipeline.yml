@@ -41,10 +41,10 @@ jobs:
             # Entra na home do usuário
             cd ~
             # Se o projeto não existe, clona. Se existe, pull.
-            if [ ! -d "meu-app" ]; then
-              git clone https://github.com/${{ github.repository }} meu-app
+            if [ ! -d "joao-app" ]; then
+              git clone https://github.com/${{ github.repository }} joao-app
             fi
-            cd meu-app
+            cd joao-app
             git pull origin main
             docker compose pull
             docker compose up -d
