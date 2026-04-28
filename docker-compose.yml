@@ -28,3 +28,6 @@ services:
       - api
     links:
       - api # Isso garante que o Nginx dentro do 'web' resolva o nome 'api'
+
+volumes:
+  joao_data:
