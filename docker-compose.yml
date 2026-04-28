@@ -17,7 +17,7 @@ services:
       DB_HOST: db
     depends_on:
       - db
-    # Removido ports para ninguém acessar a API direto de fora
+    # Mantenha sem 'ports' para ninguém acessar de fora
 
   web:
     build: ./frontend
@@ -26,8 +26,9 @@ services:
       - "8001:80"
     depends_on:
       - api
+    # O comando 'links' ajuda o Nginx a achar o container 'api' pelo nome
     links:
-      - api # Isso garante que o Nginx dentro do 'web' resolva o nome 'api'
+      - api
 
 volumes:
   joao_data:

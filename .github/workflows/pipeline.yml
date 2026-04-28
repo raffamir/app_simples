@@ -47,4 +47,5 @@ jobs:
             cd joao-app
             git pull origin main
             docker compose pull
-            docker compose up -d
+            # ALTERAÇÃO AQUI: Adicionado --build e --force-recreate
+            docker compose up -d --build --force-recreate
