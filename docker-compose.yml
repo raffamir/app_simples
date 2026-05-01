@@ -17,17 +17,14 @@ services:
       DB_HOST: db
     depends_on:
       - db
-    # Mantenha sem 'ports' para ninguém acessar de fora
-
+    ports:
+      - "3001:3000"
   web:
     build: ./frontend
     container_name: joao_web
     ports:
       - "8001:80"
     depends_on:
-      - api
-    # O comando 'links' ajuda o Nginx a achar o container 'api' pelo nome
-    links:
       - api
 
 volumes:

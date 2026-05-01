@@ -12,7 +12,7 @@
 
     <script>
         async function loadTasks() {
-            const res = await fetch('/api/tarefas');
+            const res = await fetch('http://localhost:3000/tarefas');
             const tasks = await res.json();
             const list = document.getElementById('taskList');
             list.innerHTML = tasks.map(t => `<li>${t.titulo}</li>`).join('');
@@ -20,7 +20,7 @@
 
         async function addTask() {
             const input = document.getElementById('taskInput');
-            await fetch('/api/tarefas', {
+            await fetch('http://localhost:3000/tarefas', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ titulo: input.value })
