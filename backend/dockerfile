@@ -2,6 +2,8 @@ FROM node:18-alpine
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
+# Se a sua imagem base for Alpine (ex: node:alpine)
+RUN apk add --no-cache curl
 COPY . .
 EXPOSE 3000
 CMD ["node", "server.js"]
